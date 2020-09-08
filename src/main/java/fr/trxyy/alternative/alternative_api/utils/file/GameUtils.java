@@ -7,6 +7,23 @@ import fr.trxyy.alternative.alternative_api.GameEngine;
 
 public class GameUtils {
 
+	private static int getPlatform() {
+		String osName = System.getProperty("os.name").toLowerCase();
+		if (osName.contains("linux"))
+			return 1;
+		if (osName.contains("unix"))
+			return 1;
+		if (osName.contains("solaris"))
+			return 2;
+		if (osName.contains("sunos"))
+			return 2;
+		if (osName.contains("win"))
+			return 3;
+		if (osName.contains("mac"))
+			return 4;
+		return 5;
+	}
+	
 	public static File getWorkingDirectory(String workDir) {
 		String userHome = System.getProperty("user.home", ".");
 		File workingDirectory;
@@ -28,22 +45,7 @@ public class GameUtils {
 		return workingDirectory;
 	}
 
-	private static int getPlatform() {
-		String osName = System.getProperty("os.name").toLowerCase();
-		if (osName.contains("linux"))
-			return 1;
-		if (osName.contains("unix"))
-			return 1;
-		if (osName.contains("solaris"))
-			return 2;
-		if (osName.contains("sunos"))
-			return 2;
-		if (osName.contains("win"))
-			return 3;
-		if (osName.contains("mac"))
-			return 4;
-		return 5;
-	}
+	
 
 	public static String constructClasspath(GameEngine engine) {
 		String result = "";
